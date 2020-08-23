@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { UserDataService } from '../user-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -8,18 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersListComponent implements OnInit {
   public message: string;
-  public Users: UserModel[];
+  public Users$: Observable<UserModel[]>;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<UserModel[]>('https://api.mocki.io/v1/9e133cad').subscribe(result => {
-      this.Users = result;
-    }, error => console.error(error));
+  constructor(userData: UserDataService) {
+    this.Users$ = userData.users$;
   }
 
   ngOnInit() {
     this.message = "User's List";
   }
-
 }
 export interface UserModel {
   _id: string;

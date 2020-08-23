@@ -1,0 +1,14 @@
+<div class="card h-100">
+  <h5 class="card-header info-color white-text text-center py-4">
+    Total {{(selectedUser$|async)?.tags.length}} tags found!
+  </h5>
+  <div class="card-body px-lg-5 pt-0">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of (selectedUser$|async)?.tags">
+        <div class="row">
+          <div>{{item}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

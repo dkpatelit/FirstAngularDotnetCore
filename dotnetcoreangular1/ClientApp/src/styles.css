@@ -14,3 +14,9 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.card li:hover {
+  background-color:#666;
+  cursor:pointer;
+  color:#fff;
+}

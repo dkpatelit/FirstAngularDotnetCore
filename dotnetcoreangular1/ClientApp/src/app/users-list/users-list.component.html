@@ -11,10 +11,11 @@
       <th scope="col">Email</th>
       <th scope="col">Friends</th>
       <th scope="col">Tags</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of Users; let i = index;" [attr.data-index]="i+1">
+    <tr *ngFor="let item of (Users$ | async); let i = index;" [attr.data-index]="i+1">
       <th scope="row">{{i+1}}</th>
       <td>{{item.name}}</td>
       <td>{{item.phone}}</td>
@@ -22,6 +23,7 @@
       <td>{{item.email}}</td>
       <td>{{item.friends.length}}</td>
       <td>{{item.tags.length}}</td>
+      <td><a class="nav-link text-dark" [routerLink]="['/user-details', item._id]">Details</a></td>
     </tr>
    
   </tbody>
