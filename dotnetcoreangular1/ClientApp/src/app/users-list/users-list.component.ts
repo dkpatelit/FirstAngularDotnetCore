@@ -19,6 +19,8 @@ export class UsersListComponent implements OnInit {
   public sortColumn: string;
   public sortOrder: boolean;
 
+  private readonly _userDataService: UserDataService;
+
   constructor(userData: UserDataService) {
     this.pageSize = 5;
     this.currentPage = 1;
@@ -27,6 +29,11 @@ export class UsersListComponent implements OnInit {
     this.sortOrder = true;
 
     userData.users$.subscribe(data => this.reloadLocalArray(data));
+    this._userDataService = userData;
+  }
+
+  reloadDataViaHttpRequest() {
+    this._userDataService.getDataFromServer();
   }
 
   reloadLocalArray(data: UserModel[]) {
