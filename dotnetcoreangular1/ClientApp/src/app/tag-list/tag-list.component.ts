@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { UserDataService } from '../user-data.service';
 
 @Component({
-  selector: 'app-tag-list',
+  selector: 'tag-list',
   templateUrl: './tag-list.component.html',
   styleUrls: ['./tag-list.component.css']
 })

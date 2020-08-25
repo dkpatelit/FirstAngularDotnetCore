@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { UserDataService } from '../user-data.service';
 
 @Component({
-  selector: 'app-friend-list',
+  selector: 'friend-list',
   templateUrl: './friend-list.component.html',
   styleUrls: ['./friend-list.component.css']
 })
