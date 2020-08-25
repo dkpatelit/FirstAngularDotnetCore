@@ -7,44 +7,24 @@
       <!--<th scope="col">#</th>-->
       <th scope="col" class="sortable" (click)="sortTable('name')">
         Name
-        <span class="pull-right">
-          <i *ngIf="sortColumn != 'name'" class="fa fa-fw fa-sort"></i>
-          <i *ngIf="sortColumn=='name' && sortOrder==true" class="fa fa-fw fa-sort-up"></i>
-          <i *ngIf="sortColumn=='name' && sortOrder==false" class="fa fa-fw fa-sort-down"></i>
-        </span>
+        <grid-sorting-helper [sortColumn]="sortColumn" [sortOrder]="sortOrder" currentColumn="name"></grid-sorting-helper>
       </th>
       <th scope="col">Phone</th>
       <th scope="col" class="sortable" (click)="sortTable('company')">
         Company
-        <span class="pull-right">
-          <i *ngIf="sortColumn != 'company'" class="fa fa-fw fa-sort"></i>
-          <i *ngIf="sortColumn=='company' && sortOrder==true" class="fa fa-fw fa-sort-up"></i>
-          <i *ngIf="sortColumn=='company' && sortOrder==false" class="fa fa-fw fa-sort-down"></i>
-        </span>
+        <grid-sorting-helper [sortColumn]="sortColumn" [sortOrder]="sortOrder" currentColumn="company"></grid-sorting-helper>
       </th>
       <th scope="col" class="sortable" (click)="sortTable('email')">
         Email
-        <span class="pull-right">
-          <i *ngIf="sortColumn != 'email'" class="fa fa-fw fa-sort"></i>
-          <i *ngIf="sortColumn=='email' && sortOrder==true" class="fa fa-fw fa-sort-up"></i>
-          <i *ngIf="sortColumn=='email' && sortOrder==false" class="fa fa-fw fa-sort-down"></i>
-        </span>
+        <grid-sorting-helper [sortColumn]="sortColumn" [sortOrder]="sortOrder" currentColumn="email"></grid-sorting-helper>
       </th>
       <th scope="col" class="sortable" (click)="sortTable('friends')">
         Friends
-        <span class="pull-right">
-          <i *ngIf="sortColumn != 'friends'" class="fa fa-fw fa-sort"></i>
-          <i *ngIf="sortColumn=='friends' && sortOrder==true" class="fa fa-fw fa-sort-up"></i>
-          <i *ngIf="sortColumn=='friends' && sortOrder==false" class="fa fa-fw fa-sort-down"></i>
-        </span>
+        <grid-sorting-helper [sortColumn]="sortColumn" [sortOrder]="sortOrder" currentColumn="friends"></grid-sorting-helper>
       </th>
       <th scope="col" class="sortable" (click)="sortTable('tags')">
         Tags
-        <span class="pull-right">
-          <i *ngIf="sortColumn != 'tags'" class="fa fa-fw fa-sort"></i>
-          <i *ngIf="sortColumn=='tags' && sortOrder==true" class="fa fa-fw fa-sort-up"></i>
-          <i *ngIf="sortColumn=='tags' && sortOrder==false" class="fa fa-fw fa-sort-down"></i>
-        </span>
+        <grid-sorting-helper [sortColumn]="sortColumn" [sortOrder]="sortOrder" currentColumn="tags"></grid-sorting-helper>
       </th>
       <th scope="col">Details</th>
     </tr>

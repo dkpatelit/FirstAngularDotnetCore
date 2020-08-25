@@ -13,6 +13,7 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FriendListComponent } from './friend-list/friend-list.component';
 import { TagListComponent } from './tag-list/tag-list.component';
+import { SortHelperComponent } from './sort-helper/sort-helper.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TagListComponent } from './tag-list/tag-list.component';
     UsersListComponent,
     UserDetailsComponent,
     FriendListComponent,
-    TagListComponent
+    TagListComponent,
+    SortHelperComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
