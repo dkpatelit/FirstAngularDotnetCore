@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 export class UsersListComponent implements OnInit {
   public message: string;
   public gridMessage: string;
-  public Users$: Observable<UserModel[]>;
   public usersArray: UserModel[];
   public filteredUsers: UserModel[];
   public pageSize: number;
@@ -27,8 +26,7 @@ export class UsersListComponent implements OnInit {
     this.sortColumn = 'name';
     this.sortOrder = true;
 
-    this.Users$ = userData.users$;
-    this.Users$.subscribe(data => this.reloadLocalArray(data));
+    userData.users$.subscribe(data => this.reloadLocalArray(data));
   }
 
   reloadLocalArray(data: UserModel[]) {

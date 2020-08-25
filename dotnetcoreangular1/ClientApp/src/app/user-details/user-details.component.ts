@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
   id: string;
-  selectedUser$: Observable<UserModel>;
+  selectedUser: UserModel;
 
   private readonly _userDataService = null;
   private sub: any;
 
   constructor(private route: ActivatedRoute, userData: UserDataService) {
-    this.selectedUser$ = userData.selectedUser$;
+    userData.selectedUser$.subscribe(data => this.selectedUser = data);
     this._userDataService = userData;
   }
 
