@@ -17,11 +17,16 @@ export class UsersListComponent implements OnInit {
   public currentPage: number;
   public totalPages: number;
   public pageNumbersList: number[];
+  public sortColumn: string;
+  public sortOrder: boolean;
 
   constructor(userData: UserDataService) {
     this.pageSize = 5;
-    this.currentPage = 2;
+    this.currentPage = 1;
     this.totalPages = 0;
+    this.sortColumn = 'name';
+    this.sortOrder = true;
+
     this.Users$ = userData.users$;
     this.Users$.subscribe(data => this.reloadLocalArray(data));
   }
@@ -30,7 +35,7 @@ export class UsersListComponent implements OnInit {
     this.totalPages = Math.ceil(data.length / this.pageSize);
     this.pageNumbersList = Array(this.totalPages).fill(0).map((x, i) => i + 1);
     this.usersArray = data;
-
+    this.sortUsersArray();
     this.refreshGridData();
   }
 
@@ -59,6 +64,38 @@ export class UsersListComponent implements OnInit {
 
     this.gridMessage = "Showing " + (startIndex + 1) + " to " + endNumber + " of " + this.usersArray.length + " records.";
   }
+  sortTable(columnName) {
+    if (this.sortColumn == columnName) {
+      this.sortColumn = columnName;
+      this.sortOrder = !this.sortOrder;
+    }
+    else {
+      this.sortColumn = columnName;
+      this.sortOrder = true;
+    }
+    this.currentPage = 1;
+
+    this.sortUsersArray();
+    this.refreshGridData();
+  }
+
+  sortUsersArray() {
+    this.usersArray.sort((a, b) => {
+      var result = 1;
+      if (this.sortColumn == 'tags')
+        result = ((a.tags.length > b.tags.length) ? 1 : -1);
+      else if (this.sortColumn == 'friends')
+        result  = ((a.friends.length > b.friends.length) ? 1 : -1);
+      else if (this.sortColumn == 'company')
+        result = ((a.company > b.company) ? 1 : -1);
+      else if (this.sortColumn == 'phone')
+        result = ((a.phone > b.phone) ? 1 : -1);
+      else
+        result = ((a.name > b.name) ? 1 : -1);
+
+      return (this.sortOrder ? result : result * -1);
+     });
+  }
 
   ngOnInit() {
     this.message = "User's List";
@@ -67,6 +104,7 @@ export class UsersListComponent implements OnInit {
 export interface UserModel {
   _id: string;
   guid: string;
+  name: string;
   email: string;
   phone: string;
   gender: string;

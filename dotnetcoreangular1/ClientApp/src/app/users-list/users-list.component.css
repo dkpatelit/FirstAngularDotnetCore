@@ -1,0 +1,6 @@
+.sortable{
+    cursor:grab;
+}
+tr:hover{
+    background-color:#eee;
+}
