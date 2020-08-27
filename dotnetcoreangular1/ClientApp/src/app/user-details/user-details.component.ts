@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserDataService } from '../user-data.service';
 import { UserModel } from '../users-list/users-list.component';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-details',

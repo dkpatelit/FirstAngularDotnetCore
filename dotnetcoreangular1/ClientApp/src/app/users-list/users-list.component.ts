@@ -66,14 +66,8 @@ export class UsersListComponent implements OnInit {
     this.gridMessage = "Showing " + (startIndex + 1) + " to " + endNumber + " of " + this.usersArray.length + " records.";
   }
   sortTable(columnName) {
-    if (this.sortColumn == columnName) {
-      this.sortColumn = columnName;
-      this.sortOrder = !this.sortOrder;
-    }
-    else {
-      this.sortColumn = columnName;
-      this.sortOrder = true;
-    }
+    this.sortOrder = (this.sortColumn == columnName) ? !this.sortOrder : true;
+    this.sortColumn = columnName;
     this.currentPage = 1;
 
     this.sortUsersArray();
