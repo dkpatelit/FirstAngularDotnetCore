@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../user-data.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -19,21 +18,18 @@ export class UsersListComponent implements OnInit {
   public sortColumn: string;
   public sortOrder: boolean;
 
-  private readonly _userDataService: UserDataService;
-
-  constructor(userData: UserDataService) {
+  constructor(private userDataService: UserDataService) {
     this.pageSize = 5;
     this.currentPage = 1;
     this.totalPages = 0;
     this.sortColumn = 'name';
     this.sortOrder = true;
 
-    userData.users$.subscribe(data => this.reloadLocalArray(data));
-    this._userDataService = userData;
+    userDataService.users$.subscribe(data => this.reloadLocalArray(data));
   }
 
   reloadDataViaHttpRequest() {
-    this._userDataService.getDataFromServer();
+    this.userDataService.getDataFromServer();
   }
 
   reloadLocalArray(data: UserModel[]) {

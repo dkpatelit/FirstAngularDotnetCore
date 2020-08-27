@@ -13,18 +13,16 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   id: string;
   selectedUser: UserModel;
 
-  private readonly _userDataService = null;
   private sub: any;
 
-  constructor(private route: ActivatedRoute, userData: UserDataService) {
-    userData.selectedUser$.subscribe(data => this.selectedUser = data);
-    this._userDataService = userData;
+  constructor(private route: ActivatedRoute, private userDataService: UserDataService) {
+    userDataService.selectedUser$.subscribe(data => this.selectedUser = data);
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      this._userDataService.setSelectedUserId(this.id);
+      this.userDataService.setSelectedUserId(this.id);
     });
   }
 

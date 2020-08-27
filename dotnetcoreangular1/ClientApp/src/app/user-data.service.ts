@@ -10,16 +10,12 @@ export class UserDataService {
 
   private readonly _users = new BehaviorSubject<UserModel[]>([]);
   private readonly _selectedUser = new BehaviorSubject<UserModel>(null);
-  private readonly _http = new HttpClient(null);
 
-  constructor(http: HttpClient) {
-    this._http = http;
+  constructor(private http: HttpClient) {
     this.getDataFromServer();
   }
 
-
   readonly users$ = this._users.asObservable();
-
   get Users(): UserModel[] {
     return this._users.getValue();
   }
@@ -43,7 +39,6 @@ export class UserDataService {
   }
 
   readonly selectedUser$ = this._selectedUser.asObservable();
-
   get selectedUser(): UserModel {
     return this._selectedUser.getValue();
   }
@@ -52,10 +47,11 @@ export class UserDataService {
   }
 
   getDataFromServer() {
-    this._http.get<UserModel[]>('https://api.mocki.io/v1/9e133cad').subscribe(result => {
+    this.http.get<UserModel[]>('https://api.mocki.io/v1/ae798d02').subscribe(result => {
       this.Users = result;
       this.loadSelectedUserIdFromLocalDb();
     }, error => console.error(error));
   }
-
+  //https://api.mocki.io/v1/9e133cad
+  //https://api.mocki.io/v1/ae798d02
 }

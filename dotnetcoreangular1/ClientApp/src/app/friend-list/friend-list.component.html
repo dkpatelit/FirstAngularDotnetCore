@@ -6,7 +6,7 @@
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let item of (selectedUser$|async)?.friends">
         <div class="row">
-          <div class="col-md col-md-1">{{item.id}}</div>
+          <div class="col-md col-md-2">{{item.id}}</div>
           <div>{{item.name}}</div>
         </div>
       </li>
