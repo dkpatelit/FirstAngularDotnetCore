@@ -57,12 +57,11 @@ export class UsersListComponent implements OnInit {
     var startIndex = ((this.currentPage - 1) * this.pageSize);
     var endNumber = this.currentPage * this.pageSize;
 
-    this.filteredUsers = this.usersArray.slice(startIndex, endNumber);
-
     if (endNumber > this.usersArray.length) {
       endNumber = this.usersArray.length;
     }
 
+    this.filteredUsers = this.usersArray.slice(startIndex, endNumber);
     this.gridMessage = "Showing " + (startIndex + 1) + " to " + endNumber + " of " + this.usersArray.length + " records.";
   }
   sortTable(columnName) {
@@ -80,7 +79,7 @@ export class UsersListComponent implements OnInit {
       if (this.sortColumn == 'tags')
         result = ((a.tags.length > b.tags.length) ? 1 : -1);
       else if (this.sortColumn == 'friends')
-        result  = ((a.friends.length > b.friends.length) ? 1 : -1);
+        result = ((a.friends.length > b.friends.length) ? 1 : -1);
       else if (this.sortColumn == 'company')
         result = ((a.company > b.company) ? 1 : -1);
       else if (this.sortColumn == 'phone')
@@ -89,7 +88,7 @@ export class UsersListComponent implements OnInit {
         result = ((a.name > b.name) ? 1 : -1);
 
       return (this.sortOrder ? result : result * -1);
-     });
+    });
   }
 
   ngOnInit() {
