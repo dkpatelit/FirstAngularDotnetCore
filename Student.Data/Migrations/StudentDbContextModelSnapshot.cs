@@ -3,10 +3,8 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Student.Data;
 
-namespace Student.Data.Migrations
+namespace StudentSystem.Data.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
     partial class StudentDbContextModelSnapshot : ModelSnapshot

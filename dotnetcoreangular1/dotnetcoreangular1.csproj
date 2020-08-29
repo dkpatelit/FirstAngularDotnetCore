@@ -34,7 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Student.Data\Student.Data.csproj" />
+    <ProjectReference Include="..\Student.Data\StudentSystem.Data.csproj" />
+    <ProjectReference Include="..\Student.Repository\StudentSystem.Repository.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

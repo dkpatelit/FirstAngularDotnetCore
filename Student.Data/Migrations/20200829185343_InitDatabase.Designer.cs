@@ -5,9 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Student.Data;
 
-namespace Student.Data.Migrations
+namespace StudentSystem.Data.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
     [Migration("20200829185343_InitDatabase")]

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Student.Data.Migrations
+namespace StudentSystem.Data.Migrations
 {
     public partial class InitDatabase : Migration
     {

@@ -8,8 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Student.Data;
-using Student.Data.Initializer;
+using StudentSystem.Data;
+using StudentSystem.Repository;
 
 namespace dotnetcoreangular1
 {
@@ -28,7 +28,8 @@ namespace dotnetcoreangular1
             services.AddDbContext<StudentDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<DbInitializer, DbInitializer>();
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+
             services.AddControllersWithViews();
             services.AddCors();
 
@@ -54,7 +55,7 @@ namespace dotnetcoreangular1
             }
 
             app.UseCors(Options => Options.AllowAnyOrigin());
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
             {
@@ -65,6 +66,10 @@ namespace dotnetcoreangular1
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "defaultAPI",
+                    pattern: "api/{controller}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
