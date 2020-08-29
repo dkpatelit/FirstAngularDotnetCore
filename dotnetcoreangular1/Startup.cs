@@ -1,11 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Student.Data;
+using Student.Data.Initializer;
 
 namespace dotnetcoreangular1
 {
@@ -21,6 +25,10 @@ namespace dotnetcoreangular1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<StudentDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<DbInitializer, DbInitializer>();
             services.AddControllersWithViews();
             services.AddCors();
 

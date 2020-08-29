@@ -1,0 +1,14 @@
+﻿
+*Install dotnet-ef library for EF commands*
+dotnet tool install --global dotnet-ef
+
+
+
+*Creating First Migration:*
+Open Nuget Pachage Manager Console > Choose the Database Project
+
+Add-Migration InitDatabase 
+
+After Successful exiscution of first command, execute next command.
+
+Update-Database

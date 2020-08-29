@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetcoreangular1", "dotnetcoreangular1\dotnetcoreangular1.csproj", "{93248BC1-39AA-4F6B-9DCF-C4A496EE016E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetcoreangular1", "dotnetcoreangular1\dotnetcoreangular1.csproj", "{93248BC1-39AA-4F6B-9DCF-C4A496EE016E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Data", "Student.Data\Student.Data.csproj", "{5D59185C-F342-425A-9E2D-61467BF68827}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{93248BC1-39AA-4F6B-9DCF-C4A496EE016E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93248BC1-39AA-4F6B-9DCF-C4A496EE016E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93248BC1-39AA-4F6B-9DCF-C4A496EE016E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D59185C-F342-425A-9E2D-61467BF68827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D59185C-F342-425A-9E2D-61467BF68827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D59185C-F342-425A-9E2D-61467BF68827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D59185C-F342-425A-9E2D-61467BF68827}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
