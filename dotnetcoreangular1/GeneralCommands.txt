@@ -1,10 +1,23 @@
-﻿
+﻿*Angular - Generate new components*
+ng g c user-create --module=app.module
+
+*Angular - Generate new components with just .ts file*
+ng g c form-input-helper --module=app.module --inlineTemplate=true --inlineStyle=true
+
+*Angular - Generate new service*
+ng generate service validation
+
+
+
+
+
+-----------DotNet Core Section -----------------------
+
 *Install dotnet-ef library for EF commands*
 dotnet tool install --global dotnet-ef
 
 
-
-*Creating First Migration:*
+* EFCore - Creating First Migration:*
 Open Nuget Pachage Manager Console > Choose the Database Project
 
 Add-Migration InitDatabase 
@@ -12,3 +25,16 @@ Add-Migration InitDatabase
 After Successful exiscution of first command, execute next command.
 
 Update-Database
+
+
+
+
+
+
+
+
+*Reactive Forms Links*
+https://angular.io/guide/reactive-forms
+https://stackblitz.com/angular/bxpgyjakeaj?file=src%2Fapp%2Fprofile-editor%2Fprofile-editor.component.html
+
+https://angular.io/guide/form-validation

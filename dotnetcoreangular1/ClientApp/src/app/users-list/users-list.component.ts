@@ -108,6 +108,20 @@ export interface UserModel {
   tags: string[];
 }
 
+export interface StudentModel {
+  Id: number;
+  FirstName: string;
+  LastName: string;
+  EmailId: string;
+  PhoneNumber: string;
+  Gender: string;
+  Address: string;
+  City: string;
+  CompanyName: string;
+  Friends: string[];
+  Tags: string[];
+}
+
 export interface Friend {
   id: number;
   name: string;

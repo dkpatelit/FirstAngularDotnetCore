@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -14,6 +14,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { FriendListComponent } from './friend-list/friend-list.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { SortHelperComponent } from './sort-helper/sort-helper.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -26,18 +27,21 @@ import { SortHelperComponent } from './sort-helper/sort-helper.component';
     UserDetailsComponent,
     FriendListComponent,
     TagListComponent,
-    SortHelperComponent
+    SortHelperComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'users-list', component: UsersListComponent },
       { path: 'user-details/:id', component: UserDetailsComponent },
+      { path: 'user-create', component: UserCreateComponent },
     ])
   ],
   providers: [],

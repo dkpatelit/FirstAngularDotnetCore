@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserModel } from './users-list/users-list.component';
+import { UserModel, StudentModel } from './users-list/users-list.component';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -51,6 +51,13 @@ export class UserDataService {
       this.Users = result;
       this.loadSelectedUserIdFromLocalDb();
     }, error => console.error(error));
+  }
+
+  postStudentData(student: StudentModel) {
+    this.http.post('https://localhost:44363/api/student', student).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
   }
   //https://api.mocki.io/v1/9e133cad
   //https://api.mocki.io/v1/ae798d02
