@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, FormArray } from '@angular/forms';
 import { StudentModel } from '../users-list/users-list.component';
 import { UserDataService } from '../user-data.service';
 import { ValidationService } from '../validation.service';
@@ -13,6 +13,8 @@ export class UserCreateComponent implements OnInit {
   studentEntity: StudentModel = null;
   studentForm: FormGroup;
   errorMessage: string;
+  
+  Tags = new FormArray([]);
 
   constructor(private fb: FormBuilder, private userData: UserDataService) {
   }
@@ -29,11 +31,27 @@ export class UserCreateComponent implements OnInit {
       Address: new FormControl('', [Validators.required]),
       City: new FormControl('', [Validators.required]),
       Gender: new FormControl('', [Validators.required]),
-      PhoneNumber: new FormControl('', [Validators.required])
+      PhoneNumber: new FormControl('', [Validators.required]),
+      Friends: this.fb.group({ data: this.fb.array([]) })
     });
+    
+  }
+
+  addFriend(val) {
+    const friendCollection = <FormArray>this.studentForm.get('Friends.data');
+    friendCollection.push(this.getFriendObject(0, val));
+  }
+
+  getFriendObject(id, name) {
+    return this.fb.group({
+      id: id,
+      name: name
+    })
   }
 
   submitForm() {
+
+    console.log(this.studentForm.controls.Friends.value.data);
 
     if (this.studentForm.valid) {
       this.studentEntity.FirstName = this.studentForm.controls.FirstName.value;
@@ -45,6 +63,9 @@ export class UserCreateComponent implements OnInit {
       this.studentEntity.Gender = this.studentForm.controls.Gender.value;
       this.studentEntity.PhoneNumber = this.studentForm.controls.PhoneNumber.value;
 
+      console.log(this.studentForm.controls.Friends.value.data);
+      //this.studentEntity.Friends = this.studentForm.controls.Friends.value;
+
       console.log(this.studentEntity);
 
       this.userData.postStudentData(this.studentEntity);
@@ -54,7 +75,6 @@ export class UserCreateComponent implements OnInit {
         const controlErrors: ValidationErrors = this.studentForm.get(key).errors;
         if (controlErrors != null) {
           Object.keys(controlErrors).forEach(keyError => {
-            //console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
             this.errorMessage = key + " is not valid : " + keyError;
           });
         }

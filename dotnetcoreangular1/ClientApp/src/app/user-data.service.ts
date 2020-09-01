@@ -55,8 +55,8 @@ export class UserDataService {
 
   postStudentData(student: StudentModel) {
     this.http.post('https://localhost:44363/api/student', student).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
+      (response) => { },
+      (error) => { console.log(error) }
     )
   }
   //https://api.mocki.io/v1/9e133cad
